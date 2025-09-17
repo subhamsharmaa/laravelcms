@@ -18,6 +18,8 @@ class CategoriesTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->reorderable('sort')
+            ->defaultSort('sort','asc')
             ->columns([
                 TextColumn::make('name')
                     ->label(__('resource.category.fields.name'))
@@ -29,7 +31,8 @@ class CategoriesTable
 
                 TextColumn::make('parent.name')
                     ->label(__('resource.category.fields.parent_category'))
-                    ->searchable(),
+                    ->searchable()
+                    ->badge(),
 
                 IconColumn::make('active')
                     ->label(__('resource.category.fields.status'))
