@@ -41,5 +41,28 @@ return [
                 ],
             ],
         ],
+    ],
+    //post resource
+    'post' => [
+        'navigation' => [
+            'label' => "Publicación",
+            'model_label' => "Publicación",
+            'plural_model_label' => "Publicaciones"
+        ],
+        'fields' => [
+            'type' => "Tipo",
+            'title' => "Título",
+            'slug' => "Slug",
+            'exercpt' => "Extracto",
+            'content' => "Contenido",
+            'feature_image' => "Imagen Destacada",
+            'is_featured' => "Destacado",
+            'comment_status' => "Estado de Comentarios",
+            'status' => "Estado",
+            'published_at' => "Publicado En",
+            'parent_id' => "Padre",
+            'author' => "Autor",
+            'view_count' => "Vistas"
+        ]
     ]
 ];

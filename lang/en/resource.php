@@ -39,5 +39,29 @@ return [
                 ],
             ],
         ],
+    ],
+
+    //post resource
+    'post' => [
+        'navigation' => [
+            'label' => "Post",
+            'model_label' => "Post",
+            'plural_model_label' => "Post"
+        ],
+        'fields' =>[
+            'type' => "Type",
+            'title' => "Title",
+            "slug" => "Slug",
+            'exercpt' => "Excerpt",
+            'content' => "Content",
+            "feature_image" => "Image",
+            "is_featured" => "Featured",
+            "comment_status" => "Comment Status",
+            "status" => "Status",
+            "published_at" => "Published At",
+            "parent_id" => "Parent",
+            'author' => "Author",
+            'view_count' => "Views"
+        ]
     ]
 ];

@@ -41,5 +41,28 @@ return [
                 ],
             ],
         ],
+    ],
+    //post resource
+    'post' => [
+        'navigation' => [
+            'label' => "पोस्ट",
+            'model_label' => "पोस्ट",
+            'plural_model_label' => "पोस्ट्स"
+        ],
+        'fields' => [
+            'type' => "प्रकार",
+            'title' => "शीर्षक",
+            'slug' => "स्लग",
+            'exercpt' => "अंश",
+            'content' => "सामग्री",
+            'feature_image' => "प्रमुख छवि",
+            'is_featured' => "विशेष रुप से प्रदर्शित",
+            'comment_status' => "टिप्पणी स्थिति",
+            'status' => "स्थिति",
+            'published_at' => "प्रकाशित तिथि",
+            'parent_id' => "मूल पोस्ट",
+            'author' => "लेखक",
+            'view_count' => "दृश्य"
+        ]
     ]
 ];
