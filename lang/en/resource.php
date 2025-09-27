@@ -48,6 +48,9 @@ return [
             'model_label' => "Post",
             'plural_model_label' => "Post"
         ],
+        'filters'=>[
+            'status' => "Filter By Status"
+        ],
         'fields' =>[
             'type' => "Type",
             'title' => "Title",
@@ -63,5 +66,14 @@ return [
             'author' => "Author",
             'view_count' => "Views"
         ]
-    ]
+        ],
+
+        //page resource
+        'page' => [
+        'navigation' => [
+            'label' => "Page",
+            'model_label' => "Page",
+            'plural_model_label' => "Page"
+        ],
+        ]
 ];

@@ -2,12 +2,14 @@
 
 namespace App\Filament\Resources\Posts\Tables;
 
+use App\PostStatus;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class PostsTable
@@ -15,6 +17,8 @@ class PostsTable
     public static function configure(Table $table): Table
     {
         return $table
+            ->reorderable('sort')
+            ->defaultSort('sort','asc')
             ->columns([
                 ImageColumn::make('feature_image')
                     ->label(__('resource.post.fields.feature_image')),
@@ -31,10 +35,12 @@ class PostsTable
                     ->label(__('resource.post.fields.is_featured'))
                     ->boolean(),
 
-                TextColumn::make('type')
-                    ->label(__('resource.post.fields.type')),
+                // TextColumn::make('type')
+                //     ->label(__('resource.post.fields.type'))
+                //     ->badge(),
 
                 TextColumn::make('status')
+                    ->badge()
                     ->label(__('resource.post.fields.status')),
 
                 TextColumn::make('published_at')
@@ -73,7 +79,9 @@ class PostsTable
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                SelectFilter::make('status')
+                    ->label(__('resource.post.filters.status'))
+                    ->options(PostStatus::class)
             ])
             ->recordActions([
                 EditAction::make(),

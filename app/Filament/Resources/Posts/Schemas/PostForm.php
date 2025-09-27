@@ -27,11 +27,11 @@ class PostForm
                     ->schema([
                         Grid::make(1)
                             ->schema([
-                                Select::make('type')
-                                    ->label(__('resource.post.fields.type'))
-                                    ->required()
-                                    ->options(PostType::class)
-                                    ->default(PostType::PAGE),
+                                // Select::make('type')
+                                //     ->label(__('resource.post.fields.type'))
+                                //     ->required()
+                                //     ->options(PostType::class)
+                                //     ->default(request()->query('type') ?? PostType::PAGE),
 
                                 TextInput::make('title')
                                     ->label(__('resource.post.fields.title'))
@@ -79,7 +79,7 @@ class PostForm
                                     ->label(__('resource.post.fields.status'))
                                     ->required()
                                     ->options(PostStatus::class)
-                                    ->default('draft'),
+                                    ->default(PostStatus::DRAFT->value),
 
                                 DateTimePicker::make('published_at')
                                     ->label(__('resource.post.fields.published_at'))
