@@ -64,7 +64,8 @@ return [
             "published_at" => "Published At",
             "parent_id" => "Parent",
             'author' => "Author",
-            'view_count' => "Views"
+            'view_count' => "Views",
+            'categories' => "Categories"
         ]
         ],
 
