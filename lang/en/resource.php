@@ -96,5 +96,13 @@ return [
             'name' => "Menu Name",
             "slug" => "Slug"
         ]
-    ]
+        ],
+
+        // setting resource
+        'setting'=>[
+            'company_name' => "Company Name",
+            'logo' => "Logo",
+            "header_menu" => "Header Menu",
+            "footer_menu" => "Footer Menu"
+        ]
 ];

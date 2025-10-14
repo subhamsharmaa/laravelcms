@@ -10,7 +10,8 @@
         "filament/filament": "^4.0",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
-        "marvinlabs/laravel-discord-logger": "^1.4"
+        "marvinlabs/laravel-discord-logger": "^1.4",
+        "subham/filament-dynamic-settings": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

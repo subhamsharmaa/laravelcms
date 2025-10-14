@@ -21,6 +21,8 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Subham\FilamentDynamicSettings\Facades\Settings;
+use Subham\FilamentDynamicSettings\FilamentDynamicSettingsPlugin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -39,6 +41,7 @@ class AdminPanelProvider extends PanelProvider
                 'warning' => Color::Amber,
                 'danger' => Color::Rose
             ])
+            ->brandName($this->getBrandName())
             ->resourceCreatePageRedirect('index')
             ->resourceEditPageRedirect('index')
             ->font('poppins')
@@ -70,8 +73,14 @@ class AdminPanelProvider extends PanelProvider
                 PanelsRenderHook::GLOBAL_SEARCH_BEFORE,
                 fn(): string=>Blade::render("@livewire('language-toggle')")
             )
+            ->plugin(new FilamentDynamicSettingsPlugin())
             ->authMiddleware([
                 Authenticate::class,
             ]);
+    }
+
+    public function getBrandName()
+    {
+        return Settings::get('company_name','general',env('app'));
     }
 }

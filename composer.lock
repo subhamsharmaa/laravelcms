@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "966763c3616bf340f09ce2b86d26950c",
+    "content-hash": "d18eec678f2e49741ca84fbbf72931fa",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -5336,6 +5336,54 @@
                 }
             ],
             "time": "2025-02-21T14:16:57+00:00"
+        },
+        {
+            "name": "subham/filament-dynamic-settings",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/subhamsharmaa/filament-dynamic-settings.git",
+                "reference": "06a58179462e9921e7d2c1891b68bd08e82e4bec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/subhamsharmaa/filament-dynamic-settings/zipball/06a58179462e9921e7d2c1891b68bd08e82e4bec",
+                "reference": "06a58179462e9921e7d2c1891b68bd08e82e4bec",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^4.0",
+                "illuminate/contracts": "^10.0|^11.0|^12.0",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "filament/upgrade": "^4.0",
+                "orchestra/testbench": "^8.0|^9.0|^10.0",
+                "phpunit/phpunit": "^10.0|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Subham\\FilamentDynamicSettings\\FilamentDynamicSettingsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Subham\\FilamentDynamicSettings\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Dynamic settings plugin for Filament",
+            "support": {
+                "issues": "https://github.com/subhamsharmaa/filament-dynamic-settings/issues",
+                "source": "https://github.com/subhamsharmaa/filament-dynamic-settings/tree/v2.0.1"
+            },
+            "time": "2025-08-25T15:17:32+00:00"
         },
         {
             "name": "symfony/clock",
