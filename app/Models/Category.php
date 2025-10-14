@@ -15,7 +15,14 @@ class Category extends Model
         'sort',
         'description',
         'parent_id',
-        'active'
+        'active',
+        'meta_title',
+        'meta_description',
+        'meta_keywords'
+    ];
+
+    protected $casts=[
+        'meta_keywords' => 'json'
     ];
 
     public function parent(): BelongsTo

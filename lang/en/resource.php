@@ -3,6 +3,13 @@ return [
     //common lang keys
     'created_at' => "Created At",
     'updated_at' => "Updated At",
+
+    // navigation groups
+    'navigation' => [
+        "group" => [
+            'cms' => "CMS"
+        ]
+    ],
     // notifications.
     'notification' => [
         'success' => [
@@ -76,5 +83,18 @@ return [
             'model_label' => "Page",
             'plural_model_label' => "Page"
         ],
+    ],
+
+    // menu resource
+    "menu" => [
+        "navigation" => [
+            'label' => "Menu",
+            'model_label' => "Menu",
+            'plural_model_label' => "Menu"
+        ],
+        'fields' => [
+            'name' => "Menu Name",
+            "slug" => "Slug"
         ]
+    ]
 ];

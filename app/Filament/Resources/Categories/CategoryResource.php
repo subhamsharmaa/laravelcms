@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
+use UnitEnum;
 
 class CategoryResource extends Resource
 {
@@ -21,6 +22,13 @@ class CategoryResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::Tag;
 
     protected static ?string $recordTitleAttribute = 'slug';
+
+    protected static ?int $navigationSort = 1;
+
+    public static function getNavigationGroup(): string|UnitEnum|null
+    {
+        return __('resource.navigation.group.cms');
+    }
 
     public static function getNavigationLabel(): string
     {

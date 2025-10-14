@@ -15,6 +15,7 @@ use Filament\Schemas\Schema;
 use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use UnitEnum;
 
 class PostResource extends Resource
 {
@@ -23,6 +24,13 @@ class PostResource extends Resource
     protected static string|BackedEnum|null $navigationIcon = Heroicon::DocumentText;
 
     protected static ?string $recordTitleAttribute = 'title';
+
+    protected static ?int $navigationSort = 2;
+
+    public static function getNavigationGroup(): string|UnitEnum|null
+    {
+        return __('resource.navigation.group.cms');
+    }
 
      public static function getNavigationLabel(): string
     {

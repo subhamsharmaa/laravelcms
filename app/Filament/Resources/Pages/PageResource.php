@@ -25,7 +25,9 @@ class PageResource extends PostResource
 
     protected static ?string $recordTitleAttribute = 'title';
 
-         public static function getNavigationLabel(): string
+    protected static ?int $navigationSort = 3;
+
+    public static function getNavigationLabel(): string
     {
         return __('resource.page.navigation.label');
     }
