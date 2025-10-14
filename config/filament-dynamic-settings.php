@@ -1,5 +1,7 @@
 <?php
 
+use App\Filament\Forms\CustomMenuField;
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -147,11 +149,11 @@ return [
     */
     'custom_components' => [
         // Example:
-        // 'custom_field_type' => [
-        //     'component' => CustomFieldComponent::class,
-        //     'label' => 'Custom Field',
-        //     'description' => 'A custom field component',
-        // ],
+        'Menu' => [
+            'component' => CustomMenuField::class,
+            'label' => 'Choose Menu',
+            'description' => 'A custom field component',
+        ],
     ],
 
     /*

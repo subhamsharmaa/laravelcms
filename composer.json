@@ -11,6 +11,7 @@
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "marvinlabs/laravel-discord-logger": "^1.4",
+        "solution-forest/filament-tree": "^3.1",
         "subham/filament-dynamic-settings": "^2.0"
     },
     "require-dev": {
