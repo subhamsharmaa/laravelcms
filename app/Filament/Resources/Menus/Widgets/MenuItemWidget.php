@@ -10,6 +10,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use SolutionForest\FilamentTree\Actions\DeleteAction;
+use SolutionForest\FilamentTree\Actions\EditAction as ActionsEditAction;
 use SolutionForest\FilamentTree\Widgets\Tree;
 
 class MenuItemWidget extends Tree
@@ -80,13 +82,13 @@ class MenuItemWidget extends Tree
             //         Notification::make()->success()->title('Hello World')->send();
             //     }),
             // ViewAction::make(),
-            // EditAction::make(),
+            ActionsEditAction::make(),
             // ActionGroup::make([
                 
             //     ViewAction::make(),
             //     EditAction::make(),
             // ]),
-            // DeleteAction::make(),
+            DeleteAction::make(),
         ];
     }
     // OR OVERRIDE FOLLOWING METHODS

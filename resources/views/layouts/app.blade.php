@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" x-data>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
 <body class="bg-gray-50">
@@ -13,14 +14,29 @@
     <header class="bg-white shadow-sm">
         <nav class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
-                <div class="text-2xl font-bold text-gray-800">
-                    MyBlog
-                </div>
+                <!-- Logo -->
+                <div class="text-2xl font-bold text-gray-800">MyBlog</div>
+                <!-- Navigation -->
                 <ul class="flex space-x-8">
-                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Home</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-gray-900">About</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Blog</a></li>
-                    <li><a href="#" class="text-gray-600 hover:text-gray-900">Contact</a></li>
+                    @foreach($mainMenuItems as $item)
+                    @if($item->children && $item->children->count())
+                    <li class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+                        <button class="text-gray-600 hover:text-gray-900 flex items-center focus:outline-none">
+                            {{$item->title}}
+                           
+                        </button>
+
+                        <ul x-show="open" x-transition
+                            class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-10 py-1">
+                            @foreach($item->children as $childItem)
+                            <li><a href="{{$item->url}}" class="block px-4 py-2 text-gray-600 hover:bg-gray-100">{{$childItem->title}}</a></li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    @else
+                    <li><a href="{{$item->url}}" class="text-gray-600 hover:text-gray-900">{{$item->title}}</a></li>
+                    @endif
+                    @endforeach
                 </ul>
             </div>
         </nav>
@@ -57,7 +73,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 MyBlog. All rights reserved.</p>
+                <p>&copy; 2025 MyBlog. All rights reserved.</p>
             </div>
         </div>
     </footer>
