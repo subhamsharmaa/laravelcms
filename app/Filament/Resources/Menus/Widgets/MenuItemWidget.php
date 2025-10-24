@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
 use SolutionForest\FilamentTree\Actions\DeleteAction;
 use SolutionForest\FilamentTree\Actions\EditAction as ActionsEditAction;
 use SolutionForest\FilamentTree\Widgets\Tree;
-
+use Illuminate\Support\Str;
 class MenuItemWidget extends Tree
 {
     protected static string $model = MenuItem::class;
@@ -45,6 +45,7 @@ class MenuItemWidget extends Tree
 
                     Select::make('type')
                         ->options([
+                            'custom' => "Custom",
                             'category' => "Category",
                             'post' => "Post",
                             'page' => "Page"
@@ -53,6 +54,7 @@ class MenuItemWidget extends Tree
                         ->live(onBlur:true),
 
                     Select::make('slug')
+                        ->label('Content')
                         ->searchable()
                         ->preload()
                         ->options(function(Get $get){
@@ -68,10 +70,12 @@ class MenuItemWidget extends Tree
                             {
                                 return Post::page()->pluck('title','slug');
                             }
-                        }),
+                        })
+                        ->visible(fn(Get $get)=> $get('type') != 'custom'),
 
                     TextInput::make('url')
                         ->required()
+                        ->unique()
                         ->hintAction(
                                 Action::make('generate_slug')
                                     ->action(function(Get $get,Set $set){
@@ -79,7 +83,7 @@ class MenuItemWidget extends Tree
                                             'category'=> "/category/".$get('slug'),
                                             'post' => "/".$get('slug'),
                                             'page'=>"/".$get('slug'),
-                                            default => null
+                                            default => "/".Str::slug($get('title'))
                                         };
                                         $set('url',$slug);
                                     })

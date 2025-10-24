@@ -33,12 +33,13 @@ class Post extends Model
         return $this->belongsToMany(Category::class, 'category_posts');
     }
 
-    public function scopePost(): Builder
+    public function scopePost($query): Builder
     {
-        return $this->where('type',PostType::POST);
+        return $query->where('type',PostType::POST);
     }
-    public function scopePage(): Builder
+    
+    public function scopePage($query): Builder
     {
-        return $this->where('type',PostType::PAGE);
+        return $query->where('type',PostType::PAGE);
     }
 }
