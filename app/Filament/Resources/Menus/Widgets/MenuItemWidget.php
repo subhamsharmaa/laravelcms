@@ -2,12 +2,17 @@
 
 namespace App\Filament\Resources\Menus\Widgets;
 
+use App\Models\Category;
 use App\Models\MenuItem;
+use App\Models\Post;
+use Filament\Actions\Action;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use SolutionForest\FilamentTree\Actions\DeleteAction;
@@ -38,8 +43,47 @@ class MenuItemWidget extends Tree
                     TextInput::make('title')
                         ->required(),
 
+                    Select::make('type')
+                        ->options([
+                            'category' => "Category",
+                            'post' => "Post",
+                            'page' => "Page"
+                        ])
+                        ->required()
+                        ->live(onBlur:true),
+
+                    Select::make('slug')
+                        ->searchable()
+                        ->preload()
+                        ->options(function(Get $get){
+                            if($get('type') == "category")
+                            {
+                                return Category::active()->pluck('name','slug');
+                            }
+                            else if($get('type') == "post")
+                            {
+                                return Post::post()->pluck('title','slug');
+                            }
+                            else if($get('type') == "page")
+                            {
+                                return Post::page()->pluck('title','slug');
+                            }
+                        }),
+
                     TextInput::make('url')
                         ->required()
+                        ->hintAction(
+                                Action::make('generate_slug')
+                                    ->action(function(Get $get,Set $set){
+                                        $slug = match($get('type')){
+                                            'category'=> "/category/".$get('slug'),
+                                            'post' => "/".$get('slug'),
+                                            'page'=>"/".$get('slug'),
+                                            default => null
+                                        };
+                                        $set('url',$slug);
+                                    })
+                            )
                 ])
         ];
     }
