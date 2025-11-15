@@ -1,21 +1,18 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/',HomeController::class);
 Route::get('/blog', function () {
     return view('blog.show');
 });
 
-Route::get('/category/{category:slug}',function(Request $request,Category $category){
-    return $category;
-});
+Route::get('/category/{category:slug}',CategoryController::class)->name('category.show');
 
-Route::get('/{post:slug}',function(Request $request,Post $post){
-    return $post;
-});
+Route::get('/{post:slug}',PostController::class)->name('post.show');

@@ -16,7 +16,8 @@ class Post extends Model
     protected $casts =[
         'status' => PostStatus::class,
         'type' => PostType::class,
-        'meta_keywords' => "json"
+        'meta_keywords' => "json",
+        'published_at' => 'datetime'
     ];
 
     public function parent() :BelongsTo
@@ -41,5 +42,10 @@ class Post extends Model
     public function scopePage($query): Builder
     {
         return $query->where('type',PostType::PAGE);
+    }
+
+    public function scopePublished($query): Builder
+    {
+        return $query->where('status',PostStatus::PUBLISHED);
     }
 }

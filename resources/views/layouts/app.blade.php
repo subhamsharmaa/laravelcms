@@ -15,7 +15,7 @@
         <nav class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between">
                 <!-- Logo -->
-                <div class="text-2xl font-bold text-gray-800">MyBlog</div>
+                <div class="text-2xl font-bold text-gray-800"> <a href="/">My Blog</a></div>
                 <!-- Navigation -->
                 <ul class="flex space-x-8">
                     @foreach($mainMenuItems as $item)
