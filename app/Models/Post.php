@@ -8,9 +8,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Spatie\Tags\HasTags;
 
 class Post extends Model
 {
+    use HasTags;
     protected $guarded =[];
 
     protected $casts =[

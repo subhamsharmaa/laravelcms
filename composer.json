@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "filament/filament": "^4.0",
+        "filament/spatie-laravel-tags-plugin": "^4.0",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
         "marvinlabs/laravel-discord-logger": "^1.4",

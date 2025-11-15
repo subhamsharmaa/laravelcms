@@ -15,4 +15,5 @@ Route::get('/blog', function () {
 
 Route::get('/category/{category:slug}',CategoryController::class)->name('category.show');
 
-Route::get('/{post:slug}',PostController::class)->name('post.show');
+Route::get('/post/tags/{slug}',[PostController::class,'postByTag'])->name('post.bytag');
+Route::get('/{post:slug}',[PostController::class,'show'])->name('post.show');

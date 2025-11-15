@@ -10,6 +10,7 @@ use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Toggle;
@@ -127,6 +128,8 @@ class PostForm
                                             ->label(__('resource.post.fields.parent_id'))
                                             ->placeholder('Select parent post')
                                             ->native(false),
+
+                                        SpatieTagsInput::make('tags')
                                     ])
                                     ->collapsible()
                                     ->collapsed()

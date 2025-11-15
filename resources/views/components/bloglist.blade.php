@@ -27,7 +27,9 @@
         @endforeach
     </div>
 
+    @if($showPaginationLink ?? true)
     <div class="mt-4">
         {{$posts->links()}}
     </div>
+    @endif
 </section>

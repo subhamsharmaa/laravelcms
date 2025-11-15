@@ -53,11 +53,11 @@
             <div class="mt-12 pt-8 border-t">
                 <h3 class="text-lg font-bold text-gray-900 mb-4">Tags:</h3>
                 <div class="flex flex-wrap gap-2">
-                    <span class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm">Web Development</span>
-                    <span class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm">Technology</span>
-                    <span class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm">AI</span>
-                    <span class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm">PWA</span>
-                    <span class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm">WebAssembly</span>
+                    @foreach($post->tags as $tag)
+                    <a href="{{route('post.bytag',$tag->slug)}}">
+                    <span class="bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm">{{ucwords($tag->name)}}</span>
+</a>
+                  @endforeach
                 </div>
             </div>
 
@@ -99,60 +99,7 @@
 </article>
 
 <!-- Related Posts -->
-<section class="bg-gray-50 py-16">
-    <div class="container mx-auto px-4">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold text-gray-900 mb-8">Related Articles</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Related Post 1 -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
-                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600" alt="Related post" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <span class="text-sm text-blue-600 font-semibold">Design</span>
-                        <h3 class="text-xl font-bold text-gray-800 mt-2 mb-3">
-                            UI Design Principles
-                        </h3>
-                        <p class="text-gray-600 mb-4">
-                            Essential principles for creating beautiful user interfaces.
-                        </p>
-                        <a href="#" class="text-blue-600 font-semibold hover:text-blue-700">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Related Post 2 -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600" alt="Related post" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <span class="text-sm text-blue-600 font-semibold">Programming</span>
-                        <h3 class="text-xl font-bold text-gray-800 mt-2 mb-3">
-                            Getting Started with Laravel
-                        </h3>
-                        <p class="text-gray-600 mb-4">
-                            A comprehensive guide to building modern applications.
-                        </p>
-                        <a href="#" class="text-blue-600 font-semibold hover:text-blue-700">Read More →</a>
-                    </div>
-                </article>
-
-                <!-- Related Post 3 -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600" alt="Related post" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <span class="text-sm text-blue-600 font-semibold">Tutorial</span>
-                        <h3 class="text-xl font-bold text-gray-800 mt-2 mb-3">
-                            Mastering Tailwind CSS
-                        </h3>
-                        <p class="text-gray-600 mb-4">
-                            Tips to become productive with Tailwind utility classes.
-                        </p>
-                        <a href="#" class="text-blue-600 font-semibold hover:text-blue-700">Read More →</a>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-</section>
+@include('components.bloglist', ['sectionTitle' => "Related Post", 'posts' => $relatedPosts,'showPaginationLink'=>false])
 
 <!-- Comments Section -->
 <section class="bg-white py-16">

@@ -4,14 +4,38 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Spatie\Tags\Tag;
 
 class PostController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * show single post
      */
-    public function __invoke(Request $request,Post $post)
+    public function show(Request $request,Post $post)
     {
-        return view('post.show',['post' => $post]);
+        $tags = $post->tags->pluck('name')->toArray();
+        $relatedPosts = Post::with('categories')
+                                ->where('id','!=',$post->id)
+                                ->withAnyTags($tags)
+                                ->post()
+                                ->published()
+                                ->orderBy('published_at','desc')
+                                ->limit(3)
+                                ->get();
+        return view('post.show',['post' => $post,'relatedPosts'=>$relatedPosts]);
+    }
+
+    /**
+     * postByTag
+     */
+    public function postByTag(Request $request,$tag)
+    {
+        $posts = Post::with('categories')
+                    ->withAnyTags([$tag])
+                    ->post()
+                    ->published()
+                    ->orderBy('published_at','desc')
+                    ->paginate(9);
+        return view('tag.show',['posts'=>$posts,'tag'=>$tag]);
     }
 }
