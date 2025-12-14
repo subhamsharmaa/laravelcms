@@ -1,5 +1,8 @@
 <?php
 
+use App\Filament\Resources\Categories\CategoryResource;
+use App\Filament\Resources\Posts\PostResource;
+
 return [
 
     /*
@@ -21,7 +24,7 @@ return [
             'pages' => true,
             'widgets' => true,
             'resources' => true,
-            'custom_permissions' => false,
+            'custom_permissions' => true,
         ],
     ],
 
@@ -170,6 +173,13 @@ return [
                 'update',
                 'delete',
             ],
+
+            CategoryResource::class => [
+                'bulkToggle'
+            ],
+            PostResource::class=>[
+                'publish'
+            ]
         ],
         'exclude' => [
             //

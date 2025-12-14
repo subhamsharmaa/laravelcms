@@ -67,4 +67,9 @@ class PostPolicy
         return $authUser->can('Reorder:Post');
     }
 
+    public function publish(AuthUser $authUser, Post $post): bool
+    {
+        return $authUser->can('Publish:Post');
+    }
+
 }

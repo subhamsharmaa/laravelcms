@@ -75,13 +75,15 @@ class PostForm
                                             ->required()
                                             ->options(PostStatus::class)
                                             ->default(PostStatus::DRAFT->value)
-                                            ->native(false),
+                                            ->native(false)
+                                            ->visible(fn()=>auth()->user()->can('Publish:Post')),
 
                                         DateTimePicker::make('published_at')
                                             ->label(__('resource.post.fields.published_at'))
                                             ->default(now())
                                             ->required()
-                                            ->native(false),
+                                            ->native(false)
+                                            ->visible(fn()=>auth()->user()->can('Publish:Post')),
 
                                         Toggle::make('is_featured')
                                             ->label(__('resource.post.fields.is_featured'))
