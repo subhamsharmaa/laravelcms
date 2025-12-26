@@ -2,8 +2,12 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Auth\EditProfile as AuthEditProfile;
+use App\Filament\Pages\Auth\Login;
 use App\Http\Middleware\SetLocale;
 use BezhanSalleh\FilamentShield\FilamentShieldPlugin;
+use Filament\Auth\Pages\EditProfile;
+use Filament\Auth\Pages\Register;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -42,6 +46,7 @@ class AdminPanelProvider extends PanelProvider
                 'warning' => Color::Amber,
                 'danger' => Color::Rose
             ])
+            ->profile(AuthEditProfile::class)
             ->brandName($this->getBrandName())
             ->resourceCreatePageRedirect('index')
             ->resourceEditPageRedirect('index')
