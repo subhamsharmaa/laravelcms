@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
@@ -16,4 +17,5 @@ Route::get('/blog', function () {
 Route::get('/category/{category:slug}',CategoryController::class)->name('category.show');
 
 Route::get('/post/tags/{slug}',[PostController::class,'postByTag'])->name('post.bytag');
+Route::post('/comment',[CommentController::class,'store'])->name('comments.store');
 Route::get('/{post:slug}',[PostController::class,'show'])->name('post.show');
