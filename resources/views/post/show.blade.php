@@ -105,59 +105,12 @@
 <section class="bg-white py-16">
     <div class="container mx-auto px-4">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl font-bold text-gray-900 mb-8">Comments (3)</h2>
+            <h2 class="text-3xl font-bold text-gray-900 mb-8">Comments ({{$post->total_comments_count}})</h2>
 
             <!-- Comment 1 -->
-            <div class="mb-8 pb-8 border-b">
-                <div class="flex items-start space-x-4">
-                    <img src="https://i.pravatar.cc/60?img=5" alt="Commenter" class="w-12 h-12 rounded-full">
-                    <div class="flex-1">
-                        <div class="flex items-center space-x-2 mb-2">
-                            <h4 class="font-bold text-gray-900">Sarah Johnson</h4>
-                            <span class="text-gray-500 text-sm">2 days ago</span>
-                        </div>
-                        <p class="text-gray-700">
-                            Great article! I've been following the WebAssembly developments closely, and it's 
-                            amazing to see how far it has come. Can't wait to see what 2024 brings!
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Comment 2 -->
-            <div class="mb-8 pb-8 border-b">
-                <div class="flex items-start space-x-4">
-                    <img src="https://i.pravatar.cc/60?img=8" alt="Commenter" class="w-12 h-12 rounded-full">
-                    <div class="flex-1">
-                        <div class="flex items-center space-x-2 mb-2">
-                            <h4 class="font-bold text-gray-900">Mike Chen</h4>
-                            <span class="text-gray-500 text-sm">1 day ago</span>
-                        </div>
-                        <p class="text-gray-700">
-                            The section on serverless architecture really resonated with me. We recently migrated 
-                            our backend to a serverless solution and the cost savings have been significant.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Comment 3 -->
-            <div class="mb-8">
-                <div class="flex items-start space-x-4">
-                    <img src="https://i.pravatar.cc/60?img=3" alt="Commenter" class="w-12 h-12 rounded-full">
-                    <div class="flex-1">
-                        <div class="flex items-center space-x-2 mb-2">
-                            <h4 class="font-bold text-gray-900">Emily Rodriguez</h4>
-                            <span class="text-gray-500 text-sm">5 hours ago</span>
-                        </div>
-                        <p class="text-gray-700">
-                            Thanks for this comprehensive overview! Would love to see a follow-up article 
-                            diving deeper into AI-powered development tools.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
+            @foreach($post->comments as $comment)
+                @include('comment._comment',['post'=>$post,'comment'=>$comment,'level'=>0])
+            @endforeach
             <!-- Comment Form -->
             <div class="mt-12">
                 <h3 class="text-2xl font-bold text-gray-900 mb-6">Leave a Comment</h3>
