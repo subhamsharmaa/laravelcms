@@ -1,6 +1,7 @@
 <?php
 
 use App\Filament\Resources\Categories\CategoryResource;
+use App\Filament\Resources\Comments\CommentResource;
 use App\Filament\Resources\Posts\PostResource;
 
 return [
@@ -179,6 +180,10 @@ return [
             ],
             PostResource::class=>[
                 'publish'
+            ],
+            CommentResource::class => [
+                'sendNotification',
+                'reply'
             ]
         ],
         'exclude' => [

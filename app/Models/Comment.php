@@ -33,4 +33,14 @@ class Comment extends Model
     {
         return $query->where('is_approved',true);
     }
+
+    public function post() :BelongsTo
+    {
+         return $this->belongsTo(Post::class);
+    }
+
+    public function parent():BelongsTo
+    {
+         return $this->belongsTo(Comment::class,'parent_id');
+    }
 }

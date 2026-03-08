@@ -30,4 +30,13 @@ class CommentForm
                     ->required(),
             ]);
     }
+
+    public static function getReplyForm()
+    {
+        return [
+            Textarea::make('body')
+                    ->required()
+                    ->columnSpanFull()
+        ];
+    }
 }

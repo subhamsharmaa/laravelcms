@@ -85,7 +85,9 @@ class AdminPanelProvider extends PanelProvider
             ->plugin(new FilamentDynamicSettingsPlugin())
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])
+            ->databaseNotifications()
+            ;
     }
 
     public function getBrandName()
